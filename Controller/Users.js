@@ -21,7 +21,8 @@ module.exports.ADD_TEACHER=(req,res)=>{
             await pool.query("insert into users values (?,?,?)",[username,hash,"Teacher"]);
             res.json({}).status(201);
         }catch(err){
-            res.status(500);
+            res.json({err})
+            res.sendStatus(500);
         }
     }
 }
